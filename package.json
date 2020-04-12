@@ -9,7 +9,7 @@
     "clean:app": "rimraf ./dist/app",
     "clean": "npm-run-all clean:api clean:app",
     "transpile": "babel ./api --out-dir ./dist/api",
-    "build:api": "npm-run-all clean:api transpile",
+    "build:api": "npm-run-all clean:api tsc",
     "build": "npm-run-all build:api",
     "server": "node ./dist/api/bin/www",
     "dev": "NODE_ENV=development npm-run-all build server",
