@@ -4,11 +4,10 @@
  * Module dependencies.
  */
 import express from 'express';
-import debugConfig from 'debug';
+import { Logger } from '../lib';
 import http from 'http';
-// import env from '../env';
+import { env } from '../env';
 
-const debug = debugConfig('kanban-api:server');
 
 export class HttpServer {
 
@@ -22,6 +21,7 @@ export class HttpServer {
     
     // Return existing instance of the server
     if (this.server) {
+      Logger.log('Returning existing server instance');
       return this.server;
     }
 
@@ -37,11 +37,13 @@ export class HttpServer {
    * Creates an express server
    */
   private static createNewServer(app: express.Application): http.Server {
+    
+    Logger.log('Creating http server');
 
     /**
      * Get port from environment and store in Express.
      */
-    const PORT = this.normalizePort(process.env.PORT || '3000');
+    const PORT = this.normalizePort(process.env.PORT || env.port);
     this.PORT = PORT;
     app.set('port', PORT);
 
@@ -76,10 +78,10 @@ export class HttpServer {
     // handle specific listen errors with friendly messages
     switch (error.code) {
       case 'EACCES':
-        console.error(bind + ' requires elevated privileges');
+        Logger.error(bind + ' requires elevated privileges');
         process.exit(1);
       case 'EADDRINUSE':
-        console.error(bind + ' is already in use');
+        Logger.error(bind + ' is already in use');
         process.exit(1);
       default:
         throw error;
@@ -94,8 +96,8 @@ export class HttpServer {
     var addr = this.server.address();
     var bind = typeof addr === 'string'
       ? 'pipe ' + addr
-      : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+      : 'port ' + addr.address + addr.port;
+    Logger.log('Listening on ' + bind);
   }
 
   /**
@@ -121,7 +123,3 @@ export class HttpServer {
   }
 
 }
-
-// Use an existing instance of the http server 
-// or create a new instance of the http server.
-// export const HttpServer = ExpressServer.createServer();

@@ -44,7 +44,3 @@ export class ExpressApp {
     return app;
   }
 }
-
-
-// Express app reference
-// export const ExpressApp = ExpressApiApp.createApp();

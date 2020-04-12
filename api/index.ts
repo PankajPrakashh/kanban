@@ -1,9 +1,28 @@
 import { HttpServer } from './express/server';
 import { ExpressApp } from './express/app';
 import { AppRoutes } from './routes';
+import { env } from './env';
+import colors from 'colors';
+
+// Nobody likes dirty console, lets clean it.
+function showDevMessage() {
+  
+  console.clear();
+
+  console.log(colors.bold.cyan('Kanban Development Server'.toUpperCase()));
+
+  console.log();
+} 
+
+// Show dev message 
+if (!env.production) {
+  showDevMessage();
+}
+
 
 // Create a new instance of express app
 const app = ExpressApp.createApp();
+
 
 /**
  * Initialize app api routes
