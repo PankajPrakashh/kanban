@@ -6,7 +6,7 @@
 import express from 'express';
 import { Logger } from '../lib';
 import http from 'http';
-import { env } from '../env';
+import { environment } from '../env';
 
 
 export class HttpServer {
@@ -43,7 +43,7 @@ export class HttpServer {
     /**
      * Get port from environment and store in Express.
      */
-    const PORT = this.normalizePort(process.env.PORT || env.port);
+    const PORT = this.normalizePort(process.env.PORT || environment.port);
     this.PORT = PORT;
     app.set('port', PORT);
 

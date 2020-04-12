@@ -1,7 +1,7 @@
 import { HttpServer } from './express/server';
 import { ExpressApp } from './express/app';
 import { AppRoutes } from './routes';
-import { env } from './env';
+import { environment } from './env';
 import colors from 'colors';
 
 // Nobody likes dirty console, lets clean it.
@@ -15,7 +15,7 @@ function showDevMessage() {
 } 
 
 // Show dev message 
-if (!env.production) {
+if (!environment.production) {
   showDevMessage();
 }
 

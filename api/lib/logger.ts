@@ -1,5 +1,5 @@
 import colors from 'colors';
-import { env } from '../env';
+import { environment } from '../env';
 
 function getDateLog(type: 'INFO' | 'WARN' | 'ERROR' | 'DEBUG' = 'INFO'): string {
 
@@ -17,7 +17,7 @@ function getDateLog(type: 'INFO' | 'WARN' | 'ERROR' | 'DEBUG' = 'INFO'): string 
     'DEBUG': `[${new Date().toISOString()}][${type}] `,
   };
 
-  return env.production ? msgProd[type] : msgDev[type];
+  return environment.production ? msgProd[type] : msgDev[type];
 }
 
 export class Logger {
