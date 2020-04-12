@@ -1,15 +1,23 @@
 import colors from 'colors';
+import { env } from '../env';
 
 function getDateLog(type: 'INFO' | 'WARN' | 'ERROR' | 'DEBUG' = 'INFO'): string {
 
-  const msg = {
+  const msgDev = {
     'INFO' : colors.bold.blue(`[${new Date().toISOString()}]`) + colors.bold.green(`[${type}]`) + ' ',
     'WARN' : colors.bold.blue(`[${new Date().toISOString()}]`) + colors.bold.yellow(`[${type}]`) + ' ',
     'ERROR': colors.bold.blue(`[${new Date().toISOString()}]`) + colors.bold.red(`[${type}]`) + ' ',
     'DEBUG': colors.bold.blue(`[${new Date().toISOString()}]`) + colors.bold.yellow(`[${type}]`) + ' ',
   };
 
-  return msg[type];
+  const msgProd = {
+    'INFO' : `[${new Date().toISOString()}][${type}] `,
+    'WARN' : `[${new Date().toISOString()}][${type}] `,
+    'ERROR': `[${new Date().toISOString()}][${type}] `,
+    'DEBUG': `[${new Date().toISOString()}][${type}] `,
+  };
+
+  return env.production ? msgProd[type] : msgDev[type];
 }
 
 /**
