@@ -7,7 +7,11 @@ const router = express.Router();
  * Define all auth routes
  */
 
-router.get('/', (req, res, next) => { });
+router.get('/', (req, res, next) => { 
+
+  // Dummy response
+  res.status(200).send('Hello World!');
+});
 
 
 // Module exports 

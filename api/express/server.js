@@ -7,7 +7,7 @@
 import app from './app';
 import debugConfig from 'debug';
 import http from 'http';
-import env from './env';
+import env from '../env';
 
 const debug = debugConfig('kanban-api:server');
 

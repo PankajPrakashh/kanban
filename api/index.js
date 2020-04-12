@@ -1,4 +1,4 @@
-import { startServer } from './server';
+import { startServer } from './express/server';
 import { initRoutes } from './routes';
 
 // Start kanban api server

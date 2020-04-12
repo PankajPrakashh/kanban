@@ -1,4 +1,4 @@
-import app from './app';
+import app from './express/app';
 import { authModule } from './modules/auth';
 
 /**
