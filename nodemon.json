@@ -1,0 +1,14 @@
+{
+  "exec": "npm run dev",
+  "watch": [
+    "api/**/*.ts",
+    "api/**/*.js",
+    "api/public/*"
+  ],
+  "ext": "ts,js",
+  "ignore": [
+    "./api/**/__tests__/**",
+    "./api/**/*.test.js",
+    "./api/**/*.spec.js"
+  ]
+}
