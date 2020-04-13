@@ -1,4 +1,5 @@
 import colors from 'colors';
+
 import { environment } from '../env';
 
 function getDateLog(type: 'INFO' | 'WARN' | 'ERROR' | 'DEBUG' = 'INFO'): string {
@@ -28,14 +29,10 @@ export class Logger {
   static log(message?: any, ...optionalParams: any[]): void {
 
     if (typeof message === 'string') {
-      console.log(getDateLog('INFO') + message);
+      console.log(getDateLog('INFO') + message, ...optionalParams);
     } else {
       console.log(getDateLog('INFO'));
-      console.log(message);
-    }
-
-    if (optionalParams.length > 0) {
-      console.log(optionalParams);
+      console.log(message, ...optionalParams);
     }
 
   }
@@ -46,14 +43,10 @@ export class Logger {
   static error(message?: any, ...optionalParams: any[]): void {
 
     if (typeof message === 'string') {
-      console.error(getDateLog('ERROR') + message);
+      console.error(getDateLog('ERROR') + message, ...optionalParams);
     } else {
       console.error(getDateLog('ERROR'));
-      console.error(message);
-    }
-
-    if (optionalParams.length > 0) {
-      console.error(optionalParams);
+      console.error(message, ...optionalParams);
     }
   }
 
@@ -63,14 +56,10 @@ export class Logger {
   static warn(message?: any, ...optionalParams: any[]): void {
 
     if (typeof message === 'string') {
-      console.warn(getDateLog('WARN') + message);
+      console.warn(getDateLog('WARN') + message, ...optionalParams);
     } else {
       console.warn(getDateLog('WARN'));
-      console.warn(message);
-    }
-
-    if (optionalParams.length > 0) {
-      console.warn(optionalParams);
+      console.warn(message, ...optionalParams);
     }
   }
 }
