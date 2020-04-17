@@ -1,17 +1,18 @@
 import express from 'express';
 
+import { AuthHandler } from './handler';
+
 // Get the router
 const router = express.Router();
+
+// Auth module handler
+const handler = new AuthHandler();
 
 /**
  * Define all auth routes
  */
 
-router.get('/', (req, res, next) => { 
-
-  // Dummy response
-  res.status(200).send('Hello World!');
-});
+router.post('/signin', handler.signin);
 
 
 // Module exports 
